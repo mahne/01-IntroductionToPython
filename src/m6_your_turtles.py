@@ -29,20 +29,21 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 #
 ########################################################################
 import rosegraphics as rg
+import math
 window = rg.TurtleWindow()
 
 felix=rg.SimpleTurtle('turtle')
 felix.pen=rg.Pen('SeaGreen3',22)
-felix.speed=76
+felix.speed=176
 penelope=rg.SimpleTurtle('turtle')
 penelope.pen=rg.Pen('bisque4',19)
-penelope.speed=84
+penelope.speed=184
 
-for k in range(100):
-    felix.right(5)
-    felix.forward(5)
+for k in range(27):
+    felix.right(math.cosh(k))
+    felix.forward(10*math.atan(k))
+    penelope.draw_regular_polygon(k,k**3/(k*10+1))
     felix.left(90)
-    felix.forward(5)
-    penelope.draw_regular_polygon(k,100**k/(k*10+1))
+    felix.forward(20)
     penelope.forward(7)
 window.close_on_mouse_click()
